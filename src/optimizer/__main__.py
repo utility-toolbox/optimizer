@@ -3,18 +3,21 @@ r"""
 
 """
 import argparse as ap
-from . import __version__
+from . import __version__, optimize
+try:
+    import better_exceptions
+    better_exceptions.hook()
+except ModuleNotFoundError:
+    pass
 
 
-parser = ap.ArgumentParser(prog="optimmizer", formatter_class=ap.ArgumentDefaultsHelpFormatter)
-parser.set_defaults(__cmd__=parser.print_help)
+parser = ap.ArgumentParser(prog="optimizer", formatter_class=ap.ArgumentDefaultsHelpFormatter)
 parser.add_argument('-v', '--version', action='version', version=__version__)
 
 
 def main():
     args = vars(parser.parse_args())
-    cmd = args.pop('__cmd__')
-    return cmd(**args)
+    return optimize(**args)
 
 
 if __name__ == '__main__':
