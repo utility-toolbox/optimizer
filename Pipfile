@@ -5,6 +5,7 @@ name = "pypi"
 
 [packages]
 pillow = "*"
+config-library = {extras = ["yaml"], version = "*"}
 
 [dev-packages]
 better-exceptions = "*"
